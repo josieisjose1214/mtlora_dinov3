@@ -1,0 +1,17 @@
+本项目是在原始 MTLoRA 代码基础上修改得到的 DINOv3 多任务版本。
+
+核心改动：
+1. 将 backbone 从 Swin 替换为 DINOv3，支持 ConvNeXt 和 ViT 两种主干。
+2. backbone 后接 DPT 风格 decoder，用于多尺度特征融合。
+3. 在共享特征之上构建四个任务头：
+   - 语义分割
+   - 病害分类
+   - 目标检测
+   - 目标计数
+4. 保留并扩展 MTLoRA，使其可注入到 DINOv3 backbone 中。
+
+当前默认面向 Wheat 多任务数据：
+- class_disease：分类
+- detect_dataset：检测
+- count_dataset：计数
+- segmentation_dataset：分割
