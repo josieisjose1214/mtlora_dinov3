@@ -33,8 +33,10 @@
 ├─ evaluation/                # 各任务评估逻辑
 ├─ configs/mtlora/tiny_448/   # 训练配置
 ├─ single_task/               # DINOv3 backbone 及部分单任务复用代码
+│  └─ fcos_core/              # 需将FCOS官方仓库中的fcos_core放置此处
 └─ command.md                 # 常用训练 / 验证命令
 ```
+**注意**：需从https://github.com/tianzhi0549/FCOS/tree/master/fcos_core 将代码下载到single_task下
 
 ## 2. 环境依赖
 
@@ -206,10 +208,6 @@ torchrun --nproc_per_node=1 main.py ^
 - `task_loss_curves.png`：各任务损失曲线
 - `ckpt_epoch_*.pth`：周期性 checkpoint
 
-## 7. 当前建议
-
-如果你准备公开到 GitHub，建议只把这份仓库当作“DINOv3 backbone 版本的 MTLoRA 实现”来介绍，不要继续沿用原始 MTLoRA README 的表述，否则读者会误以为这是原论文官方仓库的直接镜像。
-
-## 8. License
+## 7. License
 
 本仓库沿用根目录中的 [LICENSE](LICENSE)。
